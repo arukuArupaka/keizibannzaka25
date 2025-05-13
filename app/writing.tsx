@@ -15,7 +15,7 @@ const ReviewInput = () => {
       <View style={styles.container}>
         <TextInput
           style={styles.textBox}
-          placeholder="授業の口コミを書く"
+          placeholder="授業の口コミを書くよ"
           placeholderTextColor="#ccc"
           value={review}
           onChangeText={(text) => setReview(text)}
