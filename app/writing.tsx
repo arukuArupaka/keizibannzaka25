@@ -1,18 +1,17 @@
-import React, { useState } from "react";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Fontisto from "@expo/vector-icons/Fontisto";
+import React, { useState } from "react";
 
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-  TouchableOpacity,
-  Text,
-  Button,
-} from "react-native";
 import { useRouter } from "expo-router";
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
+} from "react-native";
 import Header from "./header";
 
 const writing = () => {
@@ -21,23 +20,24 @@ const writing = () => {
   const router = useRouter();
 
   //ユーザーが星をタップしたときに、選択された星とそれより左側の星が黄色に塗りつぶされる
-  const renderStars = () => {
-    return Array(5)
-      .fill(0)
-      .map((_, index) => (
+ 
+const renderStars = () => {
+  return Array(5)
+    .fill(0)
+    .map((_, index) => {
+      const iconStyle = index !== 4 ? { marginRight: 3 } : {};
+      return (
         <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
-          <View>
-            {index < rating ? (
-              <Fontisto name="star" size={20} color="#FFCD06" />
-            ) : (
-              <FontAwesome6 name="star" size={20} color="#FFCD06" />
-            )}
-          </View>
+          {index < rating ? (
+            <Fontisto name="star" size={22} color="#FFCD06" style={iconStyle} />
+          ) : (
+            <FontAwesome6 name="star" size={20} color="#FFCD06" style={iconStyle} />
+          )}
         </TouchableOpacity>
-      ));
-  };
-
-  //完了ボタンの登場・口コミの関数とスタイル
+      );
+    });
+};
+  //口コミの関数とスタイル
   return (
     <>
       <Header>
