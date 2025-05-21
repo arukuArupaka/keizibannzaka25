@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import Fontisto from "@expo/vector-icons/Fontisto";
 
 import {
   View,
@@ -19,14 +21,13 @@ const writing = () => {
       .fill(0)
       .map((_, index) => (
         <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
-          <Text
-            style={[
-              styles.star,
-              { color: index < rating ? "#FFCD06" : "#BDBDBD" },
-            ]}
-          >
-            ★
-          </Text>
+          <View>
+            {index < rating ? (
+              <Fontisto name="star" size={20} color="#FFCD06" />
+            ) : (
+              <FontAwesome6 name="star" size={20} color="#FFCD06" />
+            )}
+          </View>
         </TouchableOpacity>
       ));
   };
@@ -36,6 +37,8 @@ const writing = () => {
       <Header />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
+          <View style={styles.starContainer}>{renderStars()}</View>
+          {/* 星を描画 */}
           <TextInput
             style={styles.textBox}
             placeholder="授業の口コミを書く"
@@ -52,24 +55,29 @@ const writing = () => {
 //テキストボックスの位置とスタイル
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: "5%",
     backgroundColor: "#1e1e1e",
     flex: 1,
     justifyContent: "center",
   },
-
+  starContainer: {
+    flexDirection: "row",
+    backgroundColor: "#696969",
+    width: "100%",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingTop: 15,
+    paddingLeft: 15,
+  },
   textBox: {
     backgroundColor: "#696969",
     color: "#FFFFFF",
-    borderRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     padding: 15,
     fontSize: 16,
     textAlignVertical: "top",
     height: "33%",
-  },
-  star: {
-    fontSize: 20,
-    marginHorizontal: 3,
   },
 });
 
