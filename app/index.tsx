@@ -16,6 +16,7 @@ export default function Index() {
       </TouchableOpacity>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
