@@ -1,8 +1,30 @@
-import { Text, View, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Writing from "./writing";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function Index() {
-  return <Writing />;
+  const router = useRouter();
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => router.push("/search")} // search画面に遷移
+      >
+        <FontAwesome name="plus-square" size={120} color="#696969" />
+      </TouchableOpacity>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1e1e1e",
+  },
+  addButton: {
+    paddingTop: "180%",
+    paddingLeft: "75%",
+  },
+});

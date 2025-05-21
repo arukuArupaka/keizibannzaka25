@@ -10,11 +10,16 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
+  Button,
 } from "react-native";
+import { useRouter } from "expo-router";
 import Header from "./header";
+
 const writing = () => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
+  const router = useRouter();
+
   //ユーザーが星をタップしたときに、選択された星とそれより左側の星が黄色に塗りつぶされる
   const renderStars = () => {
     return Array(5)
@@ -31,14 +36,23 @@ const writing = () => {
         </TouchableOpacity>
       ));
   };
-  //口コミの関数とスタイル
+
+  //完了ボタンの登場・口コミの関数とスタイル
   return (
     <>
-      <Header />
+      <Header>
+        {review.length > 0 && (
+          <TouchableOpacity
+            onPress={() => router.push("/Confirm")} // Confirm画面に遷移
+            style={styles.completeButton}
+          >
+            <Text style={styles.completeButtonText}>完了</Text>
+          </TouchableOpacity>
+        )}
+      </Header>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <View style={styles.starContainer}>{renderStars()}</View>
-          {/* 星を描画 */}
           <TextInput
             style={styles.textBox}
             placeholder="授業の口コミを書く"
@@ -52,6 +66,7 @@ const writing = () => {
     </>
   );
 };
+
 //テキストボックスの位置とスタイル
 const styles = StyleSheet.create({
   container: {
@@ -78,6 +93,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlignVertical: "top",
     height: "33%",
+  },
+  completeButton: {
+    position: "absolute",
+    right: 20,
+    top: 10,
+    backgroundColor: "#FFCD06",
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  completeButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 
