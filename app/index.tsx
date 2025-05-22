@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
   },
   addButton: {
     paddingTop: "180%",
-    paddingLeft: "75%",
+    paddingLeft: "70%",
   },
 });

@@ -1,21 +1,49 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Header from "./header";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const Search = () => {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <Header />
+      <TouchableOpacity style={styles.searchButton}>
+        <FontAwesome
+          name="search"
+          size={20}
+          color="black"
+          style={styles.icon}
+        />
+        <Text style={styles.searchButtonText}>授業を検索</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
+  //背景のスタイル
   container: {
-    alignItems: "center",
+    flex: 1,
     backgroundColor: "#1e1e1e",
   },
-  searchButton: {},
+  //検索ボタンのスタイル
+  searchButton: {
+    flexDirection: "row",
+    marginLeft: "10%",
+    marginRight: "10%",
+    backgroundColor: "#696969",
+    marginTop: "35%",
+    borderRadius: 10,
+    paddingVertical: "1%",
+  },
+  //「検索」の文字のスタイル
   searchButtonText: {
-    color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "bold",
+    color: "#333333",
+    fontSize: 20,
+  },
+  //🔍のスタイル
+  icon: {
+    marginHorizontal: "3%",
   },
 });
 

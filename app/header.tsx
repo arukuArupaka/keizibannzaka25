@@ -1,8 +1,21 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
 
-const Header: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <View style={styles.header}>{children}</View>;
+const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+  const router = useRouter();
+  return (
+    <View style={styles.header}>
+      <TouchableOpacity
+        style={styles.iconContainer}
+        onPress={() => router.back()}
+      >
+        <Ionicons name="chevron-back-sharp" size={50} color="black" />
+      </TouchableOpacity>
+      {children}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -11,12 +24,15 @@ const styles = StyleSheet.create({
     height: "12%",
     backgroundColor: "#696969",
     position: "absolute",
-    top: 0,
-    left: 0,
+    marginTop: 0,
+    marginLeft: 0,
     zIndex: 1,
-    justifyContent: "center",
-    alignItems: "flex-end",
-    paddingRight: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  iconContainer: {
+    marginLeft: "5%",
+    marginTop: "10%",
   },
 });
 

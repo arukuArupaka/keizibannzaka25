@@ -43,7 +43,7 @@ const renderStars = () => {
       <Header>
         {review.length > 0 && (
           <TouchableOpacity
-            onPress={() => router.push("/Confirm")} // Confirm画面に遷移
+            onPress={() => router.push("/Confirm")}
             style={styles.completeButton}
           >
             <Text style={styles.completeButtonText}>完了</Text>
