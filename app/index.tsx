@@ -1,5 +1,5 @@
-import Main from "./main";
+import Writing from "./writing";
 
 export default function Index() {
-  return <Main />;
+  return <Writing />;
 }

@@ -1,41 +1,58 @@
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import Fontisto from "@expo/vector-icons/Fontisto";
 import React, { useState } from "react";
 
+import { useRouter } from "expo-router";
 import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableWithoutFeedback,
   Keyboard,
-  TouchableOpacity,
+  StyleSheet,
   Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
 } from "react-native";
 import Header from "./header";
+
 const writing = () => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
+  const router = useRouter();
+
   //ユーザーが星をタップしたときに、選択された星とそれより左側の星が黄色に塗りつぶされる
-  const renderStars = () => {
-    return Array(5)
-      .fill(0)
-      .map((_, index) => (
+ 
+const renderStars = () => {
+  return Array(5)
+    .fill(0)
+    .map((_, index) => {
+      const iconStyle = index !== 4 ? { marginRight: 3 } : {};
+      return (
         <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
-          <Text
-            style={[
-              styles.star,
-              { color: index < rating ? "#FFCD06" : "#BDBDBD" },
-            ]}
-          >
-            ★
-          </Text>
+          {index < rating ? (
+            <Fontisto name="star" size={22} color="#FFCD06" style={iconStyle} />
+          ) : (
+            <FontAwesome6 name="star" size={20} color="#FFCD06" style={iconStyle} />
+          )}
         </TouchableOpacity>
-      ));
-  };
+      );
+    });
+};
   //口コミの関数とスタイル
   return (
     <>
-      <Header />
+      <Header>
+        {review.length > 0 && (
+          <TouchableOpacity
+            onPress={() => router.push("/Confirm")}
+            style={styles.completeButton}
+          >
+            <Text style={styles.completeButtonText}>完了</Text>
+          </TouchableOpacity>
+        )}
+      </Header>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
+          <View style={styles.starContainer}>{renderStars()}</View>
           <TextInput
             style={styles.textBox}
             placeholder="授業の口コミを書く"
@@ -49,27 +66,47 @@ const writing = () => {
     </>
   );
 };
+
 //テキストボックスの位置とスタイル
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: "5%",
     backgroundColor: "#1e1e1e",
     flex: 1,
     justifyContent: "center",
   },
-
+  starContainer: {
+    flexDirection: "row",
+    backgroundColor: "#696969",
+    width: "100%",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingTop: 15,
+    paddingLeft: 15,
+  },
   textBox: {
     backgroundColor: "#696969",
     color: "#FFFFFF",
-    borderRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     padding: 15,
     fontSize: 16,
     textAlignVertical: "top",
     height: "33%",
   },
-  star: {
-    fontSize: 20,
-    marginHorizontal: 3,
+  completeButton: {
+    position: "absolute",
+    right: 20,
+    top: 10,
+    backgroundColor: "#FFCD06",
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  completeButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 
