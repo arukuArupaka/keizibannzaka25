@@ -1,7 +1,5 @@
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import Fontisto from "@expo/vector-icons/Fontisto";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React, { useState } from "react";
-
 import { useRouter } from "expo-router";
 import {
   Keyboard,
@@ -10,7 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  View
+  View,
 } from "react-native";
 import Header from "./header";
 
@@ -20,36 +18,36 @@ const writing = () => {
   const router = useRouter();
 
   //ユーザーが星をタップしたときに、選択された星とそれより左側の星が黄色に塗りつぶされる
- 
-const renderStars = () => {
-  return Array(5)
-    .fill(0)
-    .map((_, index) => {
-      const iconStyle = index !== 4 ? { marginRight: 3 } : {};
-      return (
-        <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
-          {index < rating ? (
-            <Fontisto name="star" size={22} color="#FFCD06" style={iconStyle} />
-          ) : (
-            <FontAwesome6 name="star" size={20} color="#FFCD06" style={iconStyle} />
-          )}
-        </TouchableOpacity>
-      );
-    });
-};
+  const renderStars = () => {
+    return Array(5)
+      .fill(0)
+      .map((_, index) => {
+        const iconStyle = index !== 4 ? { marginRight: 3 } : {};
+        return (
+          <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
+            {index < rating ? (
+              <FontAwesome
+                name="star"
+                size={24}
+                color="#FFCD06"
+                style={iconStyle}
+              />
+            ) : (
+              <FontAwesome
+                name="star-o"
+                size={24}
+                color="#FFCD06"
+                style={iconStyle}
+              />
+            )}
+          </TouchableOpacity>
+        );
+      });
+  };
   //口コミの関数とスタイル
   return (
     <>
-      <Header>
-        {review.length > 0 && (
-          <TouchableOpacity
-            onPress={() => router.push("/Confirm")}
-            style={styles.completeButton}
-          >
-            <Text style={styles.completeButtonText}>完了</Text>
-          </TouchableOpacity>
-        )}
-      </Header>
+      <Header />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <View style={styles.starContainer}>{renderStars()}</View>
@@ -61,6 +59,19 @@ const renderStars = () => {
             onChangeText={(text) => setReview(text)}
             multiline
           />
+          {review.length > 0 && (
+            <TouchableOpacity
+              style={styles.confirmButton}
+              onPress={() =>
+                router.push({
+                  pathname: "/Confirm",
+                  params: { review, rating },
+                })
+              }
+            >
+              <Text style={styles.confirmButtonText}>確認画面へ</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </TouchableWithoutFeedback>
     </>
@@ -69,43 +80,48 @@ const renderStars = () => {
 
 //テキストボックスの位置とスタイル
 const styles = StyleSheet.create({
+  //背景のスタイル
   container: {
-    padding: "5%",
+    paddingHorizontal: "5%",
     backgroundColor: "#1e1e1e",
-    flex: 1,
-    justifyContent: "center",
+    height: "100%",
   },
+  //星のスタイル
   starContainer: {
+    marginTop: "60%",
     flexDirection: "row",
     backgroundColor: "#696969",
     width: "100%",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    paddingTop: 15,
-    paddingLeft: 15,
+    paddingTop: "5%",
+    paddingLeft: "5%",
   },
+  //テキストボックス
   textBox: {
+    marginTop: "0%",
     backgroundColor: "#696969",
     color: "#FFFFFF",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    padding: 15,
-    fontSize: 16,
+    paddingLeft: "5%",
+    paddingTop: "10%",
+    fontSize: 20,
     textAlignVertical: "top",
     height: "33%",
   },
-  completeButton: {
-    position: "absolute",
-    right: 20,
-    top: 10,
-    backgroundColor: "#FFCD06",
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 5,
+  //「確認画面へ」のボタン
+  confirmButton: {
+    marginTop: "10%",
+    backgroundColor: "#696969",
+    paddingVertical: "2%",
+    paddingHorizontal: "30%",
+    borderRadius: 10,
+    alignItems: "center",
   },
-  completeButtonText: {
+  confirmButtonText: {
     color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
   },
 });
