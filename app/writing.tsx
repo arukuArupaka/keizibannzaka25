@@ -1,8 +1,8 @@
+import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Fontisto from "@expo/vector-icons/Fontisto";
-import React, { useState } from "react";
-
 import { useRouter } from "expo-router";
+import React, { useState } from "react";
 import {
   Keyboard,
   StyleSheet,
@@ -15,6 +15,7 @@ import {
 import Header from "./header";
 
 const writing = () => {
+ 
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
   const router = useRouter();
@@ -27,7 +28,8 @@ const renderStars = () => {
     .map((_, index) => {
       const iconStyle = index !== 4 ? { marginRight: 3 } : {};
       return (
-        <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
+        <TouchableOpacity key={index} onPress={() => setRating(index + 1)
+        }>
           {index < rating ? (
             <Fontisto name="star" size={22} color="#FFCD06" style={iconStyle} />
           ) : (
@@ -40,10 +42,16 @@ const renderStars = () => {
   //口コミの関数とスタイル
   return (
     <>
+    <View style={{
+      flex: 1,
+    }}
+    >
+
+   
       <Header>
         {review.length > 0 && (
           <TouchableOpacity
-            onPress={() => router.push("/Confirm")}
+            onPress={() => router.push("/confirm")}
             style={styles.completeButton}
           >
             <Text style={styles.completeButtonText}>完了</Text>
@@ -60,9 +68,25 @@ const renderStars = () => {
             value={review}
             onChangeText={(text) => setReview(text)}
             multiline
-          />
-        </View>
-      </TouchableWithoutFeedback>
+          /> 
+       </View> 
+      </TouchableWithoutFeedback> 
+
+      <TouchableOpacity 
+        onPress={() => router.push("/main")}
+        style={{
+          left: 0,
+          right: 0,
+          height: "10%",
+          backgroundColor: "#BDBDBD",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+<Entypo name="home" size={55} color="black" />
+
+      </TouchableOpacity>
+      </View>
     </>
   );
 };

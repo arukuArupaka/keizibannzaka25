@@ -1,19 +1,38 @@
-import { View } from "react-native";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { TouchableOpacity, View } from "react-native";
 
-const Main = () => {
+const main = () => {
   return (
-    <View
-      style={{
-        width: "100%",
-        height: "12%",
-        backgroundColor: "#696969",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        zIndex: 1,
-      }}
-    ></View>
+    <View style={{ flex: 1, backgroundColor: "#1e1e1e" }}>
+
+   {/*フッター部分*/}
+      <View
+        style={{
+          width: "100%",
+          height: "15%",
+          backgroundColor: "#1e1e1e",
+          flexDirection: "row",
+          alignItems: "center", //垂直方向の位置を中央にそろえる
+          borderColor: "#A9A9A9",
+          borderBottomWidth:1,
+          paddingLeft: 3,//左側に余白を追加
+        }}
+      >  <TouchableOpacity style={{backgroundColor: "red",
+        alignItems: "center",
+        justifyContent: "center",
+
+
+
+       }} >
+         <FontAwesome 
+        name="search" 
+        size={23} 
+        color="#A9A9A9"
+        />
+        </TouchableOpacity> 
+       
+      </View>
+    </View>
   );
 };
-
-export default Main;
+export default main;

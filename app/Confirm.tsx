@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-const Confirm = () => {
+const confirm = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>確認画面</Text>
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Confirm;
+export default confirm;
