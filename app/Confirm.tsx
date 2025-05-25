@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react"; 
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useLocalSearchParams } from "expo-router";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Header from "./header";
 
 const Confirm = () => {
   const { rating, review } = useLocalSearchParams();
   const numericRating = Number(rating);
+  const [hearted, setHearted] = useState(false);
+
   //星の表示
   const renderStars = () => {
     return Array(5)
@@ -31,9 +34,25 @@ const Confirm = () => {
       <Header />
       <View style={styles.container}>
         <View style={styles.starContainer}>{renderStars()}</View>
+         <TouchableOpacity
+          onPress={() => setHearted(!hearted)}
+          style={{ marginBottom: "50%", alignSelf: "flex-end" }}
+        >
+          <MaterialCommunityIcons
+            name={hearted ? "cards-heart" : "cards-heart-outline"}
+            size={24}
+            color="red"
+          />
+        </TouchableOpacity>
         <View style={styles.textBox}>
           <Text style={styles.text}>{review}</Text>
         </View>
+         <MaterialCommunityIcons
+          name="cards-heart"
+          size={24}
+          color="red"
+          style={{ marginTop: "100%", alignSelf: "flex-end" }}
+        />
         <TouchableOpacity style={styles.postButton} onPress={handlePost}>
           <Text style={styles.postButtonText}>投稿する</Text>
         </TouchableOpacity>
