@@ -20,9 +20,6 @@ const main = () => {
       >  <TouchableOpacity style={{backgroundColor: "red",
         alignItems: "center",
         justifyContent: "center",
-
-
-
        }} >
          <FontAwesome 
         name="search" 
