@@ -66,7 +66,7 @@ const writing = () => {
               style={styles.confirmButton}
               onPress={() =>
                 router.push({
-                  pathname: "/confirm",
+                  pathname: "/Confirm",
                   params: { review, rating },
                 })
               }
