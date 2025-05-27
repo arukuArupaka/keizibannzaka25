@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingTop: "10%",
     fontSize: 20,
     textAlignVertical: "top",
-    height: "33%",
+    height: "30%",
   },
   //「確認画面へ」のボタン
   confirmButton: {

@@ -28,11 +28,10 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     zIndex: 1,
     flexDirection: "row",
-    alignItems: "center",
   },
   iconContainer: {
     marginLeft: "5%",
-    marginTop: "10%",
+    marginTop: "9%",
     justifyContent: "flex-start",
   },
 });
