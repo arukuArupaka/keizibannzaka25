@@ -1,8 +1,16 @@
+<<<<<<< Updated upstream
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+=======
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useLocalSearchParams } from "expo-router";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+>>>>>>> Stashed changes
 import Header from "./header";
 
 const Confirm = () => {
@@ -35,7 +43,7 @@ const Confirm = () => {
       <Header />
       <View style={styles.container}>
         <View style={styles.starContainer}>{renderStars()}</View>
-         <TouchableOpacity
+        <TouchableOpacity
           onPress={() => setHearted(!hearted)}
           style={{ marginBottom: "50%", alignSelf: "flex-end" }}
         >
@@ -48,12 +56,6 @@ const Confirm = () => {
         <View style={styles.textBox}>
           <Text style={styles.text}>{review}</Text>
         </View>
-         <MaterialCommunityIcons
-          name="cards-heart"
-          size={24}
-          color="red"
-          style={{ marginTop: "100%", alignSelf: "flex-end" }}
-        />
         <TouchableOpacity style={styles.postButton} onPress={handlePost}>
           <Text style={styles.postButtonText}>投稿する</Text>
         </TouchableOpacity>
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
     paddingTop: "10%",
     textAlignVertical: "top",
-    height: "33%",
+    height: "30%",
   },
   text: {
     color: "#FFFFFF",
