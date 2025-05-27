@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   //テキストボックス
   textBox: {
     marginTop: "0%",
+    marginBottom:"0%",
     backgroundColor: "#696969",
     color: "#FFFFFF",
     borderBottomLeftRadius: 10,

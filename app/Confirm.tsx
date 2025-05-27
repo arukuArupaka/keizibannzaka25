@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { useLocalSearchParams } from "expo-router";
-import React, { useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-=======
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useLocalSearchParams } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
->>>>>>> Stashed changes
 import Header from "./header";
 
 const Confirm = () => {
@@ -43,19 +35,21 @@ const Confirm = () => {
       <Header />
       <View style={styles.container}>
         <View style={styles.starContainer}>{renderStars()}</View>
-        <TouchableOpacity
-          onPress={() => setHearted(!hearted)}
-          style={{ marginBottom: "50%", alignSelf: "flex-end" }}
-        >
-          <MaterialCommunityIcons
-            name={hearted ? "cards-heart" : "cards-heart-outline"}
-            size={24}
-            color="red"
-          />
-        </TouchableOpacity>
         <View style={styles.textBox}>
           <Text style={styles.text}>{review}</Text>
         </View>
+       <View style={styles.heartContainer}>
+          <TouchableOpacity
+            onPress={() => setHearted(!hearted)}
+            style={{ alignSelf: "flex-end" }}
+          >
+            <MaterialCommunityIcons
+              name={hearted ? "heart" : "heart-outline"}
+              size={30}
+              color={hearted ? "red" : "red"}
+            />
+          </TouchableOpacity>
+        </View>       
         <TouchableOpacity style={styles.postButton} onPress={handlePost}>
           <Text style={styles.postButtonText}>投稿する</Text>
         </TouchableOpacity>
@@ -81,10 +75,7 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
   },
   textBox: {
-    marginTop: "0%",
     backgroundColor: "#696969",
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
     paddingLeft: "5%",
     paddingTop: "10%",
     textAlignVertical: "top",
@@ -95,18 +86,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   postButton: {
-    marginTop: "10%",
     backgroundColor: "#696969",
     paddingVertical: "2%",
     paddingHorizontal: "30%",
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "center"
   },
   postButtonText: {
     color: "#FFFFFF",
     fontSize: 20,
     fontWeight: "bold",
   },
+  heartContainer:{
+    marginBottom:"10%",
+    backgroundColor:"#696969",
+    paddingRight:"6%",
+    paddingBottom:"3%",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  }
 });
 
-export default confirm;
+export default Confirm;
