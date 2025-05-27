@@ -1,12 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Keyboard,
+} from "react-native";
 import Header from "./header";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useRouter } from "expo-router";
 
 const Search = () => {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
-      <Header />
+      <Header>
+        <TouchableOpacity
+          style={styles.completeButton}
+          onPress={() => router.push("/writing")} // writing画面に遷移
+        >
+          <Text style={styles.completeButtonText}>検索</Text>
+        </TouchableOpacity>
+      </Header>
       <TouchableOpacity style={styles.searchButton}>
         <FontAwesome
           name="search"
@@ -44,6 +60,18 @@ const styles = StyleSheet.create({
   //🔍のスタイル
   icon: {
     marginHorizontal: "3%",
+  },
+  //検索ボタンのスタイル
+  completeButton: {
+    marginLeft: "60%",
+    marginTop: "12%",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  completeButtonText: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "1E1E1E",
   },
 });
 

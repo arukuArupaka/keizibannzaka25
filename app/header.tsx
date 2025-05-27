@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     marginLeft: "5%",
     marginTop: "10%",
+    justifyContent: "flex-start",
   },
 });
 
