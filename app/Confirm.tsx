@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useLocalSearchParams } from "expo-router";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Header from "./header";
 
 const Confirm = () => {
   const { rating, review } = useLocalSearchParams();
   const numericRating = Number(rating);
-  const [hearted, setHearted] = useState(false);
 
   //星の表示
   const renderStars = () => {
@@ -39,16 +37,18 @@ const Confirm = () => {
           <Text style={styles.text}>{review}</Text>
         </View>
         <View style={styles.heartContainer}>
-          <TouchableOpacity
-            onPress={() => setHearted(!hearted)}
-            style={{ alignSelf: "flex-end" }}
-          >
-            <MaterialCommunityIcons
-              name={hearted ? "heart" : "heart-outline"}
-              size={30}
-              color={hearted ? "red" : "red"}
-            />
-          </TouchableOpacity>
+          <AntDesign
+            name="like2"
+            size={30}
+            color="white"
+            style={{ marginLeft: "80%" }}
+          />
+          <AntDesign
+            name="dislike2"
+            size={30}
+            color="white"
+            style={{ marginLeft: "3%" }}
+          />
         </View>
         <TouchableOpacity style={styles.postButton} onPress={handlePost}>
           <Text style={styles.postButtonText}>投稿する</Text>
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     paddingBottom: "3%",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    flexDirection: "row",
   },
 });
 
