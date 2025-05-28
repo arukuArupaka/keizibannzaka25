@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const router = useRouter();

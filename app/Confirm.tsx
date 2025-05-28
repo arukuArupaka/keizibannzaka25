@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useLocalSearchParams } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import Header from "./header";
 
 const Confirm = () => {
@@ -38,7 +38,7 @@ const Confirm = () => {
         <View style={styles.textBox}>
           <Text style={styles.text}>{review}</Text>
         </View>
-       <View style={styles.heartContainer}>
+        <View style={styles.heartContainer}>
           <TouchableOpacity
             onPress={() => setHearted(!hearted)}
             style={{ alignSelf: "flex-end" }}
@@ -49,7 +49,7 @@ const Confirm = () => {
               color={hearted ? "red" : "red"}
             />
           </TouchableOpacity>
-        </View>       
+        </View>
         <TouchableOpacity style={styles.postButton} onPress={handlePost}>
           <Text style={styles.postButtonText}>投稿する</Text>
         </TouchableOpacity>
@@ -60,9 +60,8 @@ const Confirm = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
+    flex: 1,
     backgroundColor: "#1e1e1e",
-    paddingHorizontal: "5%",
   },
   starContainer: {
     marginTop: "60%",
@@ -90,21 +89,21 @@ const styles = StyleSheet.create({
     paddingVertical: "2%",
     paddingHorizontal: "30%",
     borderRadius: 10,
-    alignItems: "center"
+    alignItems: "center",
   },
   postButtonText: {
     color: "#FFFFFF",
     fontSize: 20,
     fontWeight: "bold",
   },
-  heartContainer:{
-    marginBottom:"10%",
-    backgroundColor:"#696969",
-    paddingRight:"6%",
-    paddingBottom:"3%",
+  heartContainer: {
+    marginBottom: "10%",
+    backgroundColor: "#696969",
+    paddingRight: "6%",
+    paddingBottom: "3%",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-  }
+  },
 });
 
 export default Confirm;

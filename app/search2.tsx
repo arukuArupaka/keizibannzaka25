@@ -7,18 +7,17 @@ import {
   Keyboard,
 } from "react-native";
 import Header from "./header";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useRouter } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const Search = () => {
   const router = useRouter();
-
   return (
     <View style={styles.container}>
       <Header />
       <TouchableOpacity
         style={styles.searchButton}
-        onPress={() => router.push("/writing")}
+        onPress={() => router.push("/review")}
       >
         <FontAwesome
           name="search"

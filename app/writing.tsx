@@ -13,7 +13,6 @@ import {
 import Header from "./header";
 
 const writing = () => {
- 
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
   const router = useRouter();
@@ -84,9 +83,8 @@ const writing = () => {
 const styles = StyleSheet.create({
   //背景のスタイル
   container: {
-    paddingHorizontal: "5%",
+    flex: 1,
     backgroundColor: "#1e1e1e",
-    height: "100%",
   },
   //星のスタイル
   starContainer: {

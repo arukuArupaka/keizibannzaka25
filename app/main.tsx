@@ -1,35 +1,48 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { TouchableOpacity, View } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { SearchBar } from "react-native-screens";
+import { useRouter } from "expo-router";
+import { TouchableOpacity, View, StyleSheet, Text } from "react-native";
 
-const main = () => {
+const Main = () => {
+  const router = useRouter();
   return (
-    <View style={{ flex: 1, backgroundColor: "#1e1e1e" }}>
-
-   {/*フッター部分*/}
-      <View
-        style={{
-          width: "100%",
-          height: "15%",
-          backgroundColor: "#1e1e1e",
-          flexDirection: "row",
-          alignItems: "center", //垂直方向の位置を中央にそろえる
-          borderColor: "#A9A9A9",
-          borderBottomWidth:1,
-          paddingLeft: 3,//左側に余白を追加
-        }}
-      >  <TouchableOpacity style={{backgroundColor: "red",
-        alignItems: "center",
-        justifyContent: "center",
-       }} >
-         <FontAwesome 
-        name="search" 
-        size={23} 
-        color="#A9A9A9"
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.searchButton2}
+        onPress={() => router.push("/search2")}
+      >
+        <FontAwesome
+          name="search"
+          size={23}
+          color="#000000"
+          style={styles.icon}
         />
-        </TouchableOpacity> 
-       
-      </View>
+        <Text style={styles.searchButton2Text}>検索</Text>
+      </TouchableOpacity>
     </View>
   );
 };
-export default main;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1e1e1e",
+  },
+  icon: {
+    marginHorizontal: "3%",
+  },
+  searchButton2Text: {
+    color: "#000000",
+    fontSize: 20,
+  },
+  searchButton2: {
+    backgroundColor: "#696969",
+    marginTop: "23%",
+    width: "60%",
+    borderRadius: 10,
+    flexDirection: "row",
+    paddingVertical: "1%",
+    marginLeft: "35%",
+  },
+});
+export default Main;
