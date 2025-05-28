@@ -58,7 +58,9 @@ const writing = () => {
             placeholderTextColor="#BDBDBD"
             value={review}
             onChangeText={(text) => setReview(text)}
-            multiline
+            multiline={true}
+            scrollEnabled={true}
+            textAlignVertical="top"
           />
           {review.length > 0 && (
             <TouchableOpacity
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
   //テキストボックス
   textBox: {
     marginTop: "0%",
-    marginBottom:"0%",
+    marginBottom: "0%",
     backgroundColor: "#696969",
     color: "#FFFFFF",
     borderBottomLeftRadius: 10,
