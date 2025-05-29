@@ -1,7 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { SearchBar } from "react-native-screens";
 import { useRouter } from "expo-router";
-import { TouchableOpacity, View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Main = () => {
   const router = useRouter();

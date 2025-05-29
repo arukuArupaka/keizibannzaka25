@@ -1,17 +1,16 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import {
-  Keyboard,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Header from "./header";
 
+//項目
+const [attendance, setAttendance] = useState("");
+const [term, setTerm] = useState("");
+const [testDifficulty, setTestDifficulty] = useState("");
+const [comment, setComment] = useState("");
+//星
 const writing = () => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
@@ -49,34 +48,19 @@ const writing = () => {
   return (
     <>
       <Header />
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <View style={styles.starContainer}>{renderStars()}</View>
-          <TextInput
-            style={styles.textBox}
-            placeholder="授業の口コミを書く"
-            placeholderTextColor="#BDBDBD"
-            value={review}
-            onChangeText={(text) => setReview(text)}
-            multiline={true}
-            scrollEnabled={true}
-            textAlignVertical="top"
-          />
-          {review.length > 0 && (
-            <TouchableOpacity
-              style={styles.confirmButton}
-              onPress={() =>
-                router.push({
-                  pathname: "/Confirm",
-                  params: { review, rating },
-                })
-              }
-            >
-              <Text style={styles.confirmButtonText}>確認画面へ</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={styles.detailRow}>
+        <Text style={styles.label}>出席</Text>
+        <Picker
+          selectedValue={attendance}
+          style={styles.picker}
+          onValueChange={(itemValue) => setAttendance(itemValue)}
+        >
+          <Picker.Item label="選択してください" value="" />
+          <Picker.Item label="毎回とる" value="毎回とる" />
+          <Picker.Item label="時々とる" value="時々とる" />
+          <Picker.Item label="毎回とらない" value="毎回とらない" />
+        </Picker>
+      </View>
     </>
   );
 };
@@ -88,45 +72,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1e1e1e",
   },
-  //星のスタイル
-  starContainer: {
-    marginTop: "60%",
-    flexDirection: "row",
-    backgroundColor: "#696969",
-    width: "100%",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    paddingTop: "5%",
-    paddingLeft: "5%",
-  },
-  //テキストボックス
-  textBox: {
-    marginTop: "0%",
-    marginBottom: "0%",
-    backgroundColor: "#696969",
-    color: "#FFFFFF",
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    paddingLeft: "5%",
-    paddingTop: "10%",
-    fontSize: 20,
-    textAlignVertical: "top",
-    height: "30%",
-  },
-  //「確認画面へ」のボタン
-  confirmButton: {
-    marginTop: "10%",
-    backgroundColor: "#696969",
-    paddingVertical: "2%",
-    paddingHorizontal: "30%",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  confirmButtonText: {
-    color: "#FFFFFF",
-    fontSize: 20,
-    fontWeight: "bold",
-  },
+  detailRow: {},
+  label: {},
+  picker: {},
 });
 
 export default writing;
