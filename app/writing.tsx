@@ -305,10 +305,11 @@ const styles = StyleSheet.create({
   //テストの選択肢
   pickerTest: {
     position: "absolute",
+    paddingVertical: 9,
     right: 5,
-    top: 10,
+    top: 2,
     fontSize: 18,
-    width: 200,
+    width: 100,
     textAlign: "right",
   },
   //テストの横の列
