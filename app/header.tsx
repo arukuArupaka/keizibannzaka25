@@ -1,7 +1,7 @@
-import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginLeft: "5%",
-    marginTop: "9%",
+    marginTop: 50,
     justifyContent: "flex-start",
   },
 });
