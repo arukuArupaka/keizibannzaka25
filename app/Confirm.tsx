@@ -1,110 +1,71 @@
-import AntDesign from "@expo/vector-icons/AntDesign";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useLocalSearchParams } from "expo-router";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Header from "./header";
 
-const Confirm = () => {
-  const { rating, review } = useLocalSearchParams();
-  const numericRating = Number(rating);
-
-  //星の表示
-  const renderStars = () => {
-    return Array(5)
-      .fill(0)
-      .map((_, index) => (
-        <FontAwesome
-          key={index}
-          name={index < numericRating ? "star" : "star-o"}
-          size={24}
-          color="#FFCD06"
-          style={{ marginRight: index !== 4 ? 3 : 0 }}
-        />
-      ));
-  };
-  // 投稿ボタンの処理
-  const handlePost = () => {
-    Alert.alert("投稿完了");
-    // 必要に応じて、サーバーにデータを送信する処理を追加
-  };
+export default function ConfirmScreen() {
+  const { rating, attendance, test1, test2, test3, testComment, comment } =
+    useLocalSearchParams();
 
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <Header />
-      <View style={styles.container}>
-        <View style={styles.starContainer}>{renderStars()}</View>
-        <View style={styles.textBox}>
-          <Text style={styles.text}>{review}</Text>
+
+      <ScrollView style={styles.container}>
+        {/* 受け取った内容を表示 */}
+        <View style={styles.row}>
+          <Text style={styles.label}>評価</Text>
+          <Text style={styles.content}>{rating}</Text>
         </View>
-        <View style={styles.heartContainer}>
-          <AntDesign
-            name="like2"
-            size={30}
-            color="white"
-            style={{ marginLeft: "80%" }}
-          />
-          <AntDesign
-            name="dislike2"
-            size={30}
-            color="white"
-            style={{ marginLeft: "3%" }}
-          />
+
+        <View style={styles.row}>
+          <Text style={styles.label}>出席確認</Text>
+          <Text style={styles.content}>{attendance}</Text>
         </View>
-        <TouchableOpacity style={styles.postButton} onPress={handlePost}>
-          <Text style={styles.postButtonText}>投稿する</Text>
-        </TouchableOpacity>
-      </View>
-    </>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>前期/中間</Text>
+          <Text style={styles.content}>{test1}</Text>
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>後期/期末</Text>
+          <Text style={styles.content}>{test2}</Text>
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>持ち込み</Text>
+          <Text style={styles.content}>{test3}</Text>
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>テストの方式・難易度</Text>
+          <Text style={styles.content}>{testComment}</Text>
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>コメント</Text>
+          <Text style={styles.content}>{comment}</Text>
+        </View>
+      </ScrollView>
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#1e1e1e",
+    padding: 16,
   },
-  starContainer: {
-    marginTop: "60%",
-    flexDirection: "row",
-    backgroundColor: "#696969",
-    width: "100%",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    paddingTop: "5%",
-    paddingLeft: "5%",
+  row: {
+    marginBottom: 10,
   },
-  textBox: {
-    backgroundColor: "#696969",
-    paddingLeft: "5%",
-    paddingTop: "10%",
-    textAlignVertical: "top",
-    height: "30%",
-  },
-  text: {
+  label: {
+    fontSize: 16,
     color: "#FFFFFF",
-    fontSize: 20,
-  },
-  postButton: {
-    backgroundColor: "#696969",
-    paddingVertical: "2%",
-    paddingHorizontal: "30%",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  postButtonText: {
-    color: "#FFFFFF",
-    fontSize: 20,
     fontWeight: "bold",
   },
-  heartContainer: {
-    marginBottom: "10%",
-    backgroundColor: "#696969",
-    paddingRight: "6%",
-    paddingBottom: "3%",
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    flexDirection: "row",
+  content: {
+    fontSize: 16,
+    color: "#FFFFFF",
   },
 });
-
-export default Confirm;

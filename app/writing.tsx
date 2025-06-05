@@ -53,144 +53,159 @@ const writing = () => {
   };
   //口コミの関数とスタイル
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <Header />
 
       <ScrollView style={styles.container}>
-        {/*授業名*/}
-        <View style={styles.rowClassName}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>授業名</Text>
-          </View>
-          <View style={styles.contentContainer}>
-            <Text style={styles.content}>-</Text>
-          </View>
-        </View>
-        {/* 教授名 */}
-        <View style={styles.rowProfessorName}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>教授名</Text>
-          </View>
-          <View style={styles.contentContainer}>
-            <Text style={styles.content}>-</Text>
-          </View>
-        </View>
-        {/* 評価 */}
-        <View style={styles.rowReview}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>評価</Text>
-          </View>
-          <View style={styles.contentContainer}>{renderStars()}</View>
-        </View>
-        {/* 出席確認 */}
-        <View style={styles.rowAttendance}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>出席確認</Text>
-          </View>
-          <View style={styles.contentContainer}>
-            <RNPickerSelect
-              placeholder={{ label: "選択してください", value: "-" }}
-              onValueChange={(value) => setAttendance(value)}
-              Icon={() => <Text style={styles.pickerTest}>▼</Text>}
-              items={[
-                { label: "毎回とる", value: "毎回とる" },
-                { label: "時々とる", value: "時々とる" },
-                { label: "毎回とらない", value: "毎回とらない" },
-              ]}
-              style={pickerSelectStyles}
-            />
-          </View>
-        </View>
-        {/* テスト */}
-        <View style={styles.rowTest}>
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>テスト</Text>
-          </View>
-          <View style={styles.testPickersColumn}>
-            <View style={styles.testPickerRow}>
-              <Text style={styles.testLabel}>前期/中間</Text>
-              <RNPickerSelect
-                placeholder={{ label: "選択してください", value: "-" }}
-                onValueChange={(value) => setTest1(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
-                items={[
-                  { label: "テストあり", value: "テストあり" },
-                  { label: "レポートのみ", value: "レポートのみ" },
-                  { label: "両方なし", value: "両方なし" },
-                ]}
-                style={pickerSelectStyles}
-              />
+        <View style={{ height: 1500 }}>
+          {/*授業名*/}
+          <View style={styles.rowClassName}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>授業名</Text>
             </View>
-            <View style={styles.testPickerRow}>
-              <Text style={styles.testLabel}>後期/期末</Text>
-              <RNPickerSelect
-                placeholder={{ label: "選択してください", value: "-" }}
-                onValueChange={(value) => setTest2(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
-                items={[
-                  { label: "テストあり", value: "テストあり" },
-                  { label: "レポートのみ", value: "レポートのみ" },
-                  { label: "両方なし", value: "両方なし" },
-                ]}
-                style={pickerSelectStyles}
-              />
+            <View style={styles.contentContainer}>
+              <Text style={styles.content}>-</Text>
             </View>
-            <View style={styles.testPickerRow}>
-              <Text style={styles.testLabel}>持ち込み</Text>
+          </View>
+          {/* 教授名 */}
+          <View style={styles.rowProfessorName}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>教授名</Text>
+            </View>
+            <View style={styles.contentContainer}>
+              <Text style={styles.content}>-</Text>
+            </View>
+          </View>
+          {/* 評価 */}
+          <View style={styles.rowReview}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>評価</Text>
+            </View>
+            <View style={styles.contentContainer}>{renderStars()}</View>
+          </View>
+          {/* 出席確認 */}
+          <View style={styles.rowAttendance}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>出席確認</Text>
+            </View>
+            <View style={styles.contentContainer}>
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
-                onValueChange={(value) => setTest3(value)}
+                onValueChange={(value) => setAttendance(value)}
                 Icon={() => <Text style={styles.pickerTest}>▼</Text>}
                 items={[
-                  { label: "可", value: "可" },
-                  { label: "不可", value: "不可" },
+                  { label: "毎回とる", value: "毎回とる" },
+                  { label: "時々とる", value: "時々とる" },
+                  { label: "毎回とらない", value: "毎回とらない" },
                 ]}
                 style={pickerSelectStyles}
               />
             </View>
           </View>
+          {/* テスト */}
+          <View style={styles.rowTest}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>テスト</Text>
+            </View>
+            <View style={styles.testPickersColumn}>
+              <View style={styles.testPickerRow}>
+                <Text style={styles.testLabel}>前期/中間</Text>
+                <RNPickerSelect
+                  placeholder={{ label: "選択してください", value: "-" }}
+                  onValueChange={(value) => setTest1(value)}
+                  Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                  items={[
+                    { label: "テストあり", value: "テストあり" },
+                    { label: "レポートのみ", value: "レポートのみ" },
+                    { label: "両方なし", value: "両方なし" },
+                  ]}
+                  style={pickerSelectStyles}
+                />
+              </View>
+              <View style={styles.testPickerRow}>
+                <Text style={styles.testLabel}>後期/期末</Text>
+                <RNPickerSelect
+                  placeholder={{ label: "選択してください", value: "-" }}
+                  onValueChange={(value) => setTest2(value)}
+                  Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                  items={[
+                    { label: "テストあり", value: "テストあり" },
+                    { label: "レポートのみ", value: "レポートのみ" },
+                    { label: "両方なし", value: "両方なし" },
+                  ]}
+                  style={pickerSelectStyles}
+                />
+              </View>
+              <View style={styles.testPickerRow}>
+                <Text style={styles.testLabel}>持ち込み</Text>
+                <RNPickerSelect
+                  placeholder={{ label: "選択してください", value: "-" }}
+                  onValueChange={(value) => setTest3(value)}
+                  Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                  items={[
+                    { label: "可", value: "可" },
+                    { label: "不可", value: "不可" },
+                  ]}
+                  style={pickerSelectStyles}
+                />
+              </View>
+            </View>
+          </View>
+          {/* テストの方式・難易度 */}
+          <View style={styles.rowTestComment}>
+            <View style={styles.labelContainerLarge}>
+              <Text style={styles.label}>テストの方式{"\n"}難易度</Text>
+            </View>
+            <View style={styles.contentContainer}>
+              <TextInput
+                style={styles.textBox}
+                multiline
+                value={testComment}
+                onChangeText={setTestComment}
+                placeholder="記入してください"
+                placeholderTextColor="#696969"
+              />
+            </View>
+          </View>
+          {/* コメント */}
+          <View style={styles.rowComment}>
+            <View style={styles.labelContainerLarge}>
+              <Text style={styles.label}>コメント</Text>
+            </View>
+            <View style={styles.contentContainer}>
+              <TextInput
+                style={styles.textBox}
+                multiline
+                value={comment}
+                onChangeText={setComment}
+                placeholder="記入してください"
+                placeholderTextColor="#696969"
+              />
+            </View>
+          </View>
+          {/* 確認ボタン */}
+          <TouchableOpacity
+            style={styles.confirmButton}
+            onPress={() =>
+              router.push({
+                pathname: "/Confirm",
+                params: {
+                  rating,
+                  attendance,
+                  test1,
+                  test2,
+                  test3,
+                  testComment,
+                  comment,
+                },
+              })
+            }
+          >
+            <Text style={styles.confirmText}>確認画面へ</Text>
+          </TouchableOpacity>
         </View>
-        {/* テストの方式・難易度 */}
-        <View style={styles.rowTestComment}>
-          <View style={styles.labelContainerLarge}>
-            <Text style={styles.label}>テストの方式{"\n"}難易度</Text>
-          </View>
-          <View style={styles.contentContainer}>
-            <TextInput
-              style={styles.textBox}
-              multiline
-              value={testComment}
-              onChangeText={setTestComment}
-              placeholder="記入してください"
-              placeholderTextColor="#696969"
-            />
-          </View>
-        </View>
-        {/* コメント */}
-        <View style={styles.rowComment}>
-          <View style={styles.labelContainerLarge}>
-            <Text style={styles.label}>コメント</Text>
-          </View>
-          <View style={styles.contentContainer}>
-            <TextInput
-              style={styles.textBox}
-              multiline
-              value={comment}
-              onChangeText={setComment}
-              placeholder="記入してください"
-              placeholderTextColor="#696969"
-            />
-          </View>
-        </View>
-        {/* 確認ボタン */}
-        <TouchableOpacity
-          style={styles.confirmButton}
-          onPress={() => router.push("/Confirm")}
-        >
-          <Text style={styles.confirmText}>確認画面へ</Text>
-        </TouchableOpacity>
       </ScrollView>
-    </>
+    </View>
   );
 };
 
@@ -198,9 +213,9 @@ const writing = () => {
 const styles = StyleSheet.create({
   //背景
   container: {
-    flex: 1,
     backgroundColor: "#1e1e1e",
     paddingHorizontal: "2%",
+    height: "100%",
   },
   //星
   starRow: {
@@ -284,7 +299,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    height: "40%",
+    height: "20%",
   },
   //コメント
   rowComment: {
@@ -292,17 +307,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    height: "40%",
-  },
-  // 出席確認の選択肢
-  pickerAttendance: {
-    backgroundColor: "#FFFFFF",
-    color: "#000000",
-    width: "40%",
     height: "20%",
-    borderRadius: 10,
   },
-  //テストの選択肢
   pickerTest: {
     position: "absolute",
     paddingVertical: 9,
@@ -332,14 +338,14 @@ const styles = StyleSheet.create({
   },
   //書き込み
   textBox: {
-    height: "90%",
+    height: 250,
     width: "70%",
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
     paddingLeft: "4%",
     color: "#000000",
     textAlignVertical: "top",
-    fontSize: 15,
+    fontSize: 17,
   },
   //確認ボタン
   confirmButton: {
@@ -365,6 +371,7 @@ const pickerSelectStyles = {
     paddingHorizontal: 10,
     color: "#000000",
     height: 40,
+    paddingRight: 30,
     justifyContent: undefined,
   },
   inputAndroid: {
@@ -373,6 +380,7 @@ const pickerSelectStyles = {
     paddingHorizontal: 10,
     color: "#000000",
     height: 40,
+    paddingRight: 30,
     justifyContent: undefined,
   },
 };
