@@ -71,13 +71,13 @@ export default function SearchScreen() {
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
                 onValueChange={(value) => setFaculty(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                Icon={() => <Text style={styles.picker}>▼</Text>}
                 items={[
                   { label: "経済部", value: "経済部" },
                   { label: "スポーツ健康学部", value: "スポーツ健康学部" },
                   { label: "食マネジメント学部", value: "食マネジメント学部" },
                   { label: "理工学部", value: "理工学部" },
-                  { label: "生命学部", value: "生命学部" },
+                  { label: "生命科学部", value: "生命科学部" },
                   { label: "薬学部", value: "薬学部" },
                 ]}
                 style={pickerStyles}
@@ -93,7 +93,7 @@ export default function SearchScreen() {
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
                 onValueChange={(value) => setDepartment(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                Icon={() => <Text style={styles.picker}>▼</Text>}
                 style={pickerStyles}
                 items={departmentItems}
               />
@@ -108,8 +108,8 @@ export default function SearchScreen() {
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
                 onValueChange={(value) => setYear(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
-                items={[{ label: "2025年度", value: "2025年度" }]}
+                Icon={() => <Text style={styles.picker}>▼</Text>}
+                items={[{ label: "2025", value: "2025" }]}
                 style={pickerStyles}
               />
             </View>
@@ -123,7 +123,7 @@ export default function SearchScreen() {
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
                 onValueChange={(value) => setSemester(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                Icon={() => <Text style={styles.picker}>▼</Text>}
                 items={[
                   { label: "春学期", value: "春学期" },
                   { label: "秋学期", value: "秋学期" },
@@ -141,7 +141,7 @@ export default function SearchScreen() {
               <RNPickerSelect
                 placeholder={{ label: "選択してください", value: "-" }}
                 onValueChange={(value) => setSubject(value)}
-                Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                Icon={() => <Text style={styles.picker}>▼</Text>}
                 items={[
                   {
                     label: "共通 (教養科目/外国語科目)",
@@ -205,19 +205,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: "#696969",
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: 10,
+    width: "25%",
+    alignSelf: "center",
   },
   searchButtonText: {
     paddingHorizontal: 10,
     color: "#FFFFFF",
-    fontSize: 20,
+    fontSize: 17,
     fontFamily: "DotGothic16_400Regular",
     fontWeight: "bold",
   },
-  pickerTest: {
+  picker: {
     position: "absolute",
-    top: 10,
+    paddingVertical: 9,
     right: 5,
+    top: 2,
     fontSize: 18,
     width: 140,
     textAlign: "right",
@@ -241,5 +244,13 @@ const pickerStyles = {
     paddingRight: 30,
     justifyContent: undefined,
   },
-  inputAndroid: {},
+  inputAndroid: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    color: "#000000",
+    height: 40,
+    paddingRight: 30,
+    justifyContent: undefined,
+  },
 };

@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={styles.searchButton2}
+        style={styles.searchButton}
         onPress={() => router.push("/search2")}
       >
         <FontAwesome
@@ -16,7 +16,7 @@ const Main = () => {
           color="#000000"
           style={styles.icon}
         />
-        <Text style={styles.searchButton2Text}>検索</Text>
+        <Text style={styles.searchButtonText}>検索</Text>
       </TouchableOpacity>
     </View>
   );
@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
   icon: {
     marginHorizontal: "3%",
   },
-  searchButton2Text: {
+  searchButtonText: {
     color: "#000000",
-    fontSize: 20,
+    fontSize: 17,
+    fontFamily: "DotGothic16_400Regular",
   },
-  searchButton2: {
+  searchButton: {
     backgroundColor: "#696969",
     marginTop: "23%",
     width: "60%",

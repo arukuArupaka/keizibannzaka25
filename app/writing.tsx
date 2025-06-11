@@ -14,25 +14,36 @@ import Header from "./header";
 
 const writing = () => {
   const [rating, setRating] = useState(0);
+  const [fullnessRating, setFullnessRating] = useState(0);
+  const [easeRating, setEaseRating] = useState(0);
   const [attendance, setAttendance] = useState("-");
   const [test1, setTest1] = useState("-");
   const [test2, setTest2] = useState("-");
   const [test3, setTest3] = useState("-");
-  const [testComment, setTestComment] = useState("");
-  const [comment, setComment] = useState("");
+  const [year, setYear] = useState("-");
+  const [semester, setSemester] = useState("-");
+
+  const [testComment, setTestComment] = useState("-");
+  const [comment, setComment] = useState("-");
 
   const router = useRouter();
 
   //ユーザーが星をタップしたときに、選択された星とそれより左側の星が黄色に塗りつぶされる
-
-  const renderStars = () => {
+  const renderStars = (
+    value: number,
+    setValue: {
+      (value: React.SetStateAction<number>): void;
+      (value: React.SetStateAction<number>): void;
+      (arg0: number): void;
+    }
+  ) => {
     return Array(5)
       .fill(0)
       .map((_, index) => {
         const iconStyle = index !== 4 ? { marginRight: 3 } : {};
         return (
-          <TouchableOpacity key={index} onPress={() => setRating(index + 1)}>
-            {index < rating ? (
+          <TouchableOpacity key={index} onPress={() => setValue(index + 1)}>
+            {index < value ? (
               <FontAwesome
                 name="star"
                 size={24}
@@ -81,7 +92,20 @@ const writing = () => {
             <View style={styles.labelContainer}>
               <Text style={styles.label}>評価</Text>
             </View>
-            <View style={styles.contentContainer}>{renderStars()}</View>
+            <View style={styles.reviewContainer}>
+              <View style={styles.reviewRow}>
+                <Text style={styles.reviewLabel}>充実度</Text>
+                <View style={styles.starRow}>
+                  {renderStars(fullnessRating, setFullnessRating)}
+                </View>
+              </View>
+              <View style={styles.reviewRow}>
+                <Text style={styles.reviewLabel}>楽単度</Text>
+                <View style={styles.starRow}>
+                  {renderStars(easeRating, setEaseRating)}
+                </View>
+              </View>
+            </View>
           </View>
           {/* 出席確認 */}
           <View style={styles.rowAttendance}>
@@ -151,6 +175,37 @@ const writing = () => {
               </View>
             </View>
           </View>
+          {/* 受けた時期 */}
+          <View style={styles.rowAttendance}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.label}>受けた時期</Text>
+            </View>
+            <View style={styles.testPickersColumn}>
+              <View style={styles.testPickerRow}>
+                <Text style={styles.testLabel}>年度</Text>
+                <RNPickerSelect
+                  placeholder={{ label: "選択してください", value: "-" }}
+                  onValueChange={(value) => setYear(value)}
+                  Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                  items={[{ label: "2025", value: "2025" }]}
+                  style={pickerSelectStyles}
+                />
+              </View>
+              <View style={styles.testPickerRow}>
+                <Text style={styles.testLabel}>学期</Text>
+                <RNPickerSelect
+                  placeholder={{ label: "選択してください", value: "-" }}
+                  onValueChange={(value) => setSemester(value)}
+                  Icon={() => <Text style={styles.pickerTest}>▼</Text>}
+                  items={[
+                    { label: "春学期", value: "春学期" },
+                    { label: "秋学期", value: "秋学期" },
+                  ]}
+                  style={pickerSelectStyles}
+                />
+              </View>
+            </View>
+          </View>
           {/* テストの方式・難易度 */}
           <View style={styles.rowTestComment}>
             <View style={styles.labelContainerLarge}>
@@ -195,6 +250,8 @@ const writing = () => {
                   test1,
                   test2,
                   test3,
+                  year,
+                  semester,
                   testComment,
                   comment,
                 },
@@ -217,12 +274,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: "2%",
     height: "100%",
   },
-  //星
-  starRow: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-  },
-  //項目
 
   labelContainer: {
     flexDirection: "row",
@@ -262,28 +313,49 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    marginBottom: "1%",
+    marginBottom: 20,
   },
   ///教授名
   rowProfessorName: {
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    marginBottom: "1%",
+    marginBottom: 20,
   },
   //評価
   rowReview: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    marginBottom: "1%",
+    marginBottom: 20,
+  },
+  reviewContainer: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    marginLeft: 20,
+  },
+  reviewRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  reviewLabel: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    width: 60,
+    fontFamily: "DotGothic16_400Regular",
+  },
+  starRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   //出席確認
   rowAttendance: {
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    marginBottom: "2%",
+    marginBottom: 20,
     height: 60,
   },
   //テスト
@@ -295,7 +367,7 @@ const styles = StyleSheet.create({
   },
   //テストの方式・難易度
   rowTestComment: {
-    marginTop: 17,
+    marginTop: 20,
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
@@ -314,7 +386,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     right: 5,
     top: 2,
-    fontSize: 18,
+    fontSize: 15,
     width: 100,
     textAlign: "right",
   },
@@ -322,7 +394,7 @@ const styles = StyleSheet.create({
   testPickersColumn: {
     flexDirection: "column",
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 20,
   },
   //テストの横の列の項目
   testPickerRow: {
@@ -332,7 +404,7 @@ const styles = StyleSheet.create({
   },
   testLabel: {
     color: "#FFFFFF",
-    fontSize: 14,
+    fontSize: 15,
     width: 80,
     fontFamily: "DotGothic16_400Regular",
   },
@@ -345,7 +417,7 @@ const styles = StyleSheet.create({
     paddingLeft: "4%",
     color: "#000000",
     textAlignVertical: "top",
-    fontSize: 17,
+    fontSize: 15,
   },
   //確認ボタン
   confirmButton: {
