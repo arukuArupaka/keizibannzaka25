@@ -161,7 +161,7 @@ export default function SearchScreen() {
           style={styles.searchButton}
           onPress={() => router.push("/review")}
         >
-          <FontAwesome name="search" size={20} color="#FFFFFF" />
+          <FontAwesome name="search" size={20} color="#1e1e1e" />
           <Text style={styles.searchButtonText}>検索</Text>
         </TouchableOpacity>
       </View>
@@ -172,7 +172,7 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   backcontainer: {
     flex: 1,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "#ffffff",
     paddingHorizontal: "2%",
   },
   container: {
@@ -189,13 +189,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     width: "30%",
     height: 30,
   },
   label: {
     fontSize: 15,
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontFamily: "DotGothic16_400Regular",
   },
   searchButton: {
@@ -203,13 +203,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     paddingVertical: 10,
     borderRadius: 8,
   },
   searchButtonText: {
     paddingHorizontal: 10,
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontSize: 20,
     fontFamily: "DotGothic16_400Regular",
     fontWeight: "bold",
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
 
 const pickerStyles = {
   inputIOS: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#d9d9d9",
     borderRadius: 8,
     paddingHorizontal: 10,
     color: "#000000",
@@ -243,7 +243,7 @@ const pickerStyles = {
     justifyContent: undefined,
   },
   inputAndroid: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#d9d9d9",
     borderRadius: 8,
     paddingHorizontal: 10,
     color: "#000000",

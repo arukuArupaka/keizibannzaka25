@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import Footer from "./footer";
 import Header from "./header";
 
 const Review = () => {
@@ -8,6 +9,7 @@ const Review = () => {
     <>
       <Header />
       <View style={styles.container}>
+        <Footer />
         <TouchableOpacity
           style={styles.label}
           onPress={() => router.push("/writing")}
@@ -20,12 +22,11 @@ const Review = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1e1e1e",
-    paddingHorizontal: "2%",
+    backgroundColor: "#ffffff",
   },
   label: {
     marginTop: "50%",
-    backgroundColor: "#696969",
+    backgroundColor: "#9e9e9e",
     alignSelf: "center",
     width: "80%",
     height: "9%",

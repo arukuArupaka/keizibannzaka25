@@ -25,18 +25,18 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "#ffffff",
   },
   icon: {
     marginHorizontal: "3%",
   },
   searchButtonText: {
-    color: "#000000",
+    color: "#1e1e1e",
     fontSize: 17,
     fontFamily: "DotGothic16_400Regular",
   },
   searchButton: {
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     marginTop: "23%",
     width: "60%",
     borderRadius: 10,

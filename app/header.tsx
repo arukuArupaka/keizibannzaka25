@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     height: "12%",
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     position: "absolute",
     marginTop: 0,
     marginLeft: 0,

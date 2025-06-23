@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -23,8 +22,8 @@ const writing = () => {
   const [year, setYear] = useState("-");
   const [semester, setSemester] = useState("-");
 
-  const [testComment, setTestComment] = useState("-");
-  const [comment, setComment] = useState("-");
+  const [testComment, setTestComment] = useState("");
+  const [comment, setComment] = useState("");
 
   const router = useRouter();
 
@@ -167,8 +166,11 @@ const writing = () => {
                   onValueChange={(value) => setTest3(value)}
                   Icon={() => <Text style={styles.pickerTest}>▼</Text>}
                   items={[
-                    { label: "可", value: "可" },
-                    { label: "不可", value: "不可" },
+                    { label: "教科書持ち込み可", value: "教科書持ち込み可" },
+                    {
+                      label: "教科書持ち込み不可",
+                      value: "教科書持ち込み不可",
+                    },
                   ]}
                   style={pickerSelectStyles}
                 />
@@ -206,59 +208,29 @@ const writing = () => {
               </View>
             </View>
           </View>
-          {/* テストの方式・難易度 */}
-          <View style={styles.rowTestComment}>
-            <View style={styles.labelContainerLarge}>
-              <Text style={styles.label}>テストの方式{"\n"}難易度</Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <TextInput
-                style={styles.textBox}
-                multiline
-                value={testComment}
-                onChangeText={setTestComment}
-                placeholder="記入してください"
-                placeholderTextColor="#696969"
-              />
-            </View>
-          </View>
-          {/* コメント */}
-          <View style={styles.rowComment}>
-            <View style={styles.labelContainerLarge}>
-              <Text style={styles.label}>コメント</Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <TextInput
-                style={styles.textBox}
-                multiline
-                value={comment}
-                onChangeText={setComment}
-                placeholder="記入してください"
-                placeholderTextColor="#696969"
-              />
-            </View>
-          </View>
+
           {/* 確認ボタン */}
           <TouchableOpacity
             style={styles.confirmButton}
             onPress={() =>
               router.push({
-                pathname: "/Confirm",
+                pathname: "/writing2",
                 params: {
-                  rating,
+                  testComment,
+                  comment,
+                  fullnessRating,
+                  easeRating,
                   attendance,
                   test1,
                   test2,
                   test3,
                   year,
                   semester,
-                  testComment,
-                  comment,
                 },
               })
             }
           >
-            <Text style={styles.confirmText}>確認画面へ</Text>
+            <Text style={styles.confirmText}>次へ</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -270,7 +242,7 @@ const writing = () => {
 const styles = StyleSheet.create({
   //背景
   container: {
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "#ffffff",
     paddingHorizontal: "2%",
     height: "100%",
   },
@@ -279,21 +251,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     width: "30%",
     height: 40,
   },
-  labelContainerLarge: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#696969",
-    width: "30%",
-    height: 56,
-  },
   label: {
     fontSize: 15,
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontFamily: "DotGothic16_400Regular",
   },
   contentContainer: {
@@ -304,7 +268,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: "4%",
   },
   content: {
-    color: "#FFFFFF",
+    color: "#d9d9d9",
     fontSize: 14,
   },
   //授業名
@@ -341,7 +305,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reviewLabel: {
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontSize: 15,
     width: 60,
     fontFamily: "DotGothic16_400Regular",
@@ -365,22 +329,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 10,
   },
-  //テストの方式・難易度
-  rowTestComment: {
-    marginTop: 20,
-    flexDirection: "row",
-    alignItems: "flex-start",
-    width: "100%",
-    height: "20%",
-  },
-  //コメント
-  rowComment: {
-    marginTop: 17,
-    flexDirection: "row",
-    alignItems: "flex-start",
-    width: "100%",
-    height: "20%",
-  },
   pickerTest: {
     position: "absolute",
     paddingVertical: 9,
@@ -403,33 +351,22 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   testLabel: {
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontSize: 15,
     width: 80,
     fontFamily: "DotGothic16_400Regular",
   },
-  //書き込み
-  textBox: {
-    height: 250,
-    width: "70%",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 10,
-    paddingLeft: "4%",
-    color: "#000000",
-    textAlignVertical: "top",
-    fontSize: 15,
-  },
-  //確認ボタン
+  //次へボタン
   confirmButton: {
-    backgroundColor: "#696969",
+    backgroundColor: "#d9d9d9",
     paddingVertical: "2%",
     paddingHorizontal: "30%",
     borderRadius: 10,
     alignItems: "center",
-    marginTop: "5%",
+    marginTop: "15%",
   },
   confirmText: {
-    color: "#FFFFFF",
+    color: "#1e1e1e",
     fontSize: 20,
     fontFamily: "DotGothic16_400Regular",
     fontWeight: "bold",
@@ -438,7 +375,7 @@ const styles = StyleSheet.create({
 
 const pickerSelectStyles = {
   inputIOS: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#d9d9d9",
     borderRadius: 8,
     paddingHorizontal: 10,
     color: "#000000",
@@ -447,7 +384,7 @@ const pickerSelectStyles = {
     justifyContent: undefined,
   },
   inputAndroid: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#d9d9d9",
     borderRadius: 8,
     paddingHorizontal: 10,
     color: "#000000",
