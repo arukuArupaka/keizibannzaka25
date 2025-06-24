@@ -4,14 +4,7 @@ import {
 } from "@expo-google-fonts/dotgothic16";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Footer from "./footer";
 import Main from "./main";
 
@@ -24,17 +17,18 @@ export default function CategoryTabs() {
   });
   const router = useRouter();
 
-  //ローディング画面
-  if (!fontsLoaded) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color="#FFFFFF" />
-      </View>
-    );
-  }
+  // //ローディング画面
+  // if (!fontsLoaded) {
+  //   return (
+  //     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  //       <ActivityIndicator size="large" color="#FFFFFF" />
+  //     </View>
+  //   );
+  // }
 
   return (
     <View style={styles.container}>
+      <CategoryTabs />
       <Main />
       <Footer />
       <Image
@@ -72,16 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ffffff",
   },
-  //書き込み追加のボタン
-  addButton: {
-    position: "absolute",
-    bottom: "5%",
-    right: "7%",
-    width: 100,
-    height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
   //掲示坂２５のロゴ
   logo: {
     position: "absolute",
@@ -106,6 +91,12 @@ const styles = StyleSheet.create({
     color: "#1e1e1e",
     fontSize: 17,
     fontWeight: "bold",
+    textShadowColor: "#555",
+    textShadowOffset: {
+      height: 1,
+      width: 0,
+    },
+    textShadowRadius: 2,
   },
   //学部カテゴリーの要素
   tabContainer: {
