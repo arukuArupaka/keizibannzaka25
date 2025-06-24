@@ -23,7 +23,7 @@ export default function Footer() {
   const handleReversePress = () => {
     // if (pathname !== "/index_bad") {
     console.log("Reverse button pressed");
-    router.push("/IndexBad");
+    router.push("/lock");
     // }
   };
 
@@ -54,7 +54,7 @@ export default function Footer() {
       <TouchableOpacity onPress={handleReversePress} style={styles.middleIcon}>
         <Image
           source={
-            pathname === "/index_bad"
+            pathname === "/lock"
               ? require("../assets/images/reverse_on.png")
               : require("../assets/images/reverse_off.png")
           }
