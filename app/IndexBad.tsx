@@ -28,7 +28,7 @@ export default function CategoryTabs() {
 
   return (
     <View style={styles.container}>
-      <CategoryTabs />
+      {/* <CategoryTabs /> */}
       <Main />
       <Footer />
       <Image

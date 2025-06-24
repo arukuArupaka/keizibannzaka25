@@ -4,7 +4,14 @@ import {
 } from "@expo-google-fonts/dotgothic16";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Footer from "./footer";
 import Main from "./main";
 
@@ -17,18 +24,17 @@ export default function CategoryTabs() {
   });
   const router = useRouter();
 
-  // //ローディング画面
-  // if (!fontsLoaded) {
-  //   return (
-  //     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-  //       <ActivityIndicator size="large" color="#FFFFFF" />
-  //     </View>
-  //   );
-  // }
+  //ローディング画面
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#FFFFFF" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      <CategoryTabs />
       <Main />
       <Footer />
       <Image

@@ -21,9 +21,10 @@ export default function Footer() {
   };
 
   const handleReversePress = () => {
-    if (pathname !== "/index_bad") {
-      router.push("/index_bad");
-    }
+    // if (pathname !== "/index_bad") {
+    console.log("Reverse button pressed");
+    router.push("/IndexBad");
+    // }
   };
 
   return (
