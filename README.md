@@ -26,8 +26,8 @@ React Native（Expo）を使用し、iOS/Android 両対応を目指して開発�
 
 | ホーム画面 | 授業レビュー投稿(前半）画面 | 授業レビュー閲覧画面 |
 |------------|-------------------|
-| ![ホーム画面](./assets/screenshot_home.png) | ![授業レビュー投稿（前半）画面](./assets/screenshot_writing.png) |
-| ![授業レビュー閲覧画面](./assets/screenshot_review.png) | 
+| ![ホーム画面](./assets/images/screenshot_home.png) | ![授業レビュー投稿（前半）画面](./assets/images/screenshot_writing.png) |
+| ![授業レビュー閲覧画面](./assets/images/screenshot_review.png) | 
 
 > 授業レビュー閲覧画面は開発途中であるため、figmaで作成した画面を表示しています。
 
