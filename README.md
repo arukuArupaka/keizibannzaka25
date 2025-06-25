@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
+# 立命館大学 掲示板アプリ（開発中）
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+本アプリは、立命館大学の学生が授業・教授に関する情報を共有できる掲示板アプリです。  
+React Native（Expo）を使用し、iOS/Android 両対応を目指して開発しています。
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 主な機能（予定含む）
+- 授業・教授ごとのレビュー投稿・閲覧
+- 授業・教授の検索・絞り込み
+- ランキングシステム（人気教授など）
+- ユーザーのランク制度（投稿数に応じてロック解除）
+- ログイン機能
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🛠 技術スタック
 
-   ```bash
-   npx expo start
-   ```
+| 分野 | 使用技術 |
+|------|-----------|
+| フロントエンド | React Native（Expo） |
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📸 スクリーンショット（開発中）
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| ホーム画面 | 授業レビュー投稿(前半）画面 | 授業レビュー閲覧画面 |
+|------------|-------------------|
+| ![ホーム画面](./assets/screenshot_home.png) | ![授業レビュー投稿（前半）画面](./assets/screenshot_writing.png) |
+| ![授業レビュー閲覧画面](./assets/screenshot_review.png) | 
 
-## Get a fresh project
+> 授業レビュー閲覧画面は開発途中であるため、figmaで作成した画面を表示しています。
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 👨‍💻 開発メンバー
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Tanaka2006（@Tanaka2006）
+- yuto4072　(@yuto4072)
+  アプリ開発サークル「はしるアルパカ」所属  
+  2025年4月からプログラミングを開始
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📅 開発スケジュール（予定）
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| 月 | 目標 |
+|----|------|
+| 2025年5月 | アプリ構想・画面設計・フロントエンド開始 |
+| 2025年6月 | フロントエンド |
+| 2025年7月 | フロントエンド終了・バックエンド開始|
+| 2025年8月 | バックエンド終了・最終発表 |
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 🚀 今後の展望
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- 学生同士のコメント機能
+- 通知機能
+- web版作成
+- 立命館大学内のイベント告知
+
